@@ -1,0 +1,16 @@
+:root {
+  --header-height: 13vh;
+}
+.general__container {
+  background-color: #f0f0f0;
+  min-height: 150vh;
+  margin-top: var(--header-height);
+}
+.cards__container {
+  width: 90vw;
+  margin: 0 auto;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}

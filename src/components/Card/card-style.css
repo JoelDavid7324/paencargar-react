@@ -1,0 +1,25 @@
+.product {
+  background-color: white;
+  padding: 7%;
+  max-width: 300px;
+  max-height: 429px;
+  display: grid;
+  grid-template-rows: 70% 1fr;
+  border-radius: 7px;
+  transition: box-shadow 0.1s;
+}
+.product:hover {
+  box-shadow: 3px 3px 7px #00000039;
+}
+.product figure {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.image__container img {
+  object-fit: contain;
+}
+.product__footer {
+  align-self: end;
+}

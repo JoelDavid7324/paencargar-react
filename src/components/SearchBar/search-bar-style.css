@@ -1,0 +1,28 @@
+.navbar__findBar {
+  width: 40vw;
+  height: max-content;
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  margin: 3vh auto;
+  background-color: white;
+  border-radius: 30px;
+}
+.navbar__findBar--figure {
+  height: 5vh;
+  padding-right: 10px;
+  display: flex;
+}
+.navbar__findBar--figure img {
+  height: 100%;
+  object-fit: contain;
+}
+.navbar__findBar input {
+  flex-grow: 1;
+  border-style: none;
+  padding: 0 17px;
+  font-size: large;
+}
+.navbar__findBar input:focus {
+  outline: none;
+}
