@@ -1,22 +1,23 @@
 import "./card-style.css";
 
-export const Card = (meta) => {
+export const Card = () => {
   return (
     <div className="product">
       <figure className="image__container">
-        <img src={meta.src} alt="img" />
+        <img src="/src/assets/cell1.jpg" alt="img" />
       </figure>
       <div className="product__footer">
-        <h1>{meta.info}</h1>
-        <div className="price">
-          <b>USD: </b> ${meta.usdPrice}
-        </div>
-        <p className="price">
-          <b>CUP: </b> ${meta.cupPrice}
+        <h2>Redmi bla bla bla </h2>
+        <p>
+          USD: <span>$122</span>
         </p>
-        <p className="description">
-          <b>Detalles </b> q
+        <p>
+          CUP: <span>$1234</span>
         </p>
+      </div>
+      <div className="product__buttons">
+        <a href="#">Detalles</a>
+        <button>Add +</button>
       </div>
     </div>
   );

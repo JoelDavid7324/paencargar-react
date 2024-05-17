@@ -1,17 +1,23 @@
 import { Header } from "./components/Header/Header";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { Card } from "./components/Card/Card";
+import { GeneralContainer } from "./components/Containers/GenaralContainer";
+import { CardsContainer } from "./components/Containers/CardsContainer";
 import "./App.css";
 function App() {
   return (
     <>
       <Header />
-      <div className="general__container">
+      <GeneralContainer>
         <SearchBar />
-        <div className="cards__container">
+        <CardsContainer>
           <Card />
-        </div>
-      </div>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </CardsContainer>
+      </GeneralContainer>
     </>
   );
 }
