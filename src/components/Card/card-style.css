@@ -2,7 +2,7 @@
   background-color: white;
   padding: 5%;
   max-width: 250px;
-  height: 429px;
+  height: 400px;
   display: grid;
   grid-template-rows: 60% 1fr auto;
   row-gap: 3%;

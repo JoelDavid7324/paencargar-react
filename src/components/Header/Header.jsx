@@ -1,8 +1,5 @@
 import "./header-style.css";
-const images = [
-  "../../../src/assets/watch.svg",
-  "../../../src/assets/shopping-cart.svg",
-];
+const images = ["/src/assets/watch.svg", "/src/assets/shopping-cart.svg"];
 export const Header = () => {
   return (
     <header className="header">
