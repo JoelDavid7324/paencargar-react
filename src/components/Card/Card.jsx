@@ -4,7 +4,7 @@ export const Card = () => {
   return (
     <div className="product">
       <figure className="image__container">
-        <img src="/src/assets/cell1.jpg" alt="img" />
+        <img src="/assets/cell2.jpg" alt="img" />
       </figure>
       <div className="product__footer">
         <h2>Redmi bla bla bla </h2>

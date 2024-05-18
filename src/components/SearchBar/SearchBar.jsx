@@ -8,7 +8,7 @@ export const SearchBar = () => {
         className="navBar__findBar--input"
       />
       <figure className="navbar__findBar--figure">
-        <img src="/src/assets/glass.svg" alt="glass" />
+        <img src="/assets/glass.svg" alt="glass" />
       </figure>
     </div>
   );

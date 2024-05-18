@@ -1,7 +1,6 @@
 .product {
   background-color: white;
   padding: 5%;
-  max-width: 250px;
   height: 400px;
   display: grid;
   grid-template-rows: 60% 1fr auto;
@@ -13,12 +12,13 @@
   box-shadow: 3px 3px 7px #00000039;
 }
 .product figure {
-  width: 100%;
-  margin: 0 auto;
+  height: 100%;
+  margin: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .image__container img {
+  width: 100%;
   object-fit: contain;
 }
 .product__footer {
@@ -32,14 +32,14 @@
   --font-size-buttons: 15px;
   display: flex;
   justify-content: space-between;
+  text-align: center;
+  border-style: none;
 }
 .product__buttons a {
   --color1: rgb(211, 183, 23);
   --color2: white;
   flex-grow: 1;
   text-decoration: none;
-  border-style: none;
-  text-align: center;
   font-size: var(--font-size-buttons);
   padding: 7px 0;
   background-color: var(--color2);
@@ -57,8 +57,6 @@
   --color1: rgb(36, 149, 68);
   --color2: white;
   flex-grow: 0.5;
-  border-style: none;
-  text-align: center;
   font-size: var(--font-size-buttons);
   background-color: var(--color2);
   border: solid 1px var(--color1);
