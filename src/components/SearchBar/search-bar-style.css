@@ -14,7 +14,7 @@
   padding-right: 10px;
   display: flex;
 }
-.navbar__findBar--figure img {
+.navbar__findBar--figure svg {
   height: 100%;
   object-fit: contain;
 }

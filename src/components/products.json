@@ -1,0 +1,232 @@
+[
+  {
+    "id": 1,
+    "name": "Redmi 9A 4+1GB 64Gb",
+    "priceCUP": 39375,
+    "priceUSD": 125,
+    "src": "img_7.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "q"
+  },
+  {
+    "id": 2,
+    "name": "Redmi A2 2+1GB 64Gb",
+    "priceCUP": 36225,
+    "priceUSD": 115,
+    "src": "img_6.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "a"
+  },
+  {
+    "id": 3,
+    "name": "Redmi 10 del 2022 4+1GB 64Gb",
+    "priceCUP": 47250,
+    "priceUSD": 150,
+    "src": "img_8.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "z"
+  },
+  {
+    "id": 4,
+    "name": "Redmi 10C 3+1GB64Gb",
+    "priceCUP": 44100,
+    "priceUSD": 140,
+    "src": "img_9.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "w"
+  },
+  {
+    "id": 5,
+    "name": "Redmi 12C 4+1GB 128Gb",
+    "priceCUP": 48825,
+    "priceUSD": 155,
+    "src": "img_10.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "s"
+  },
+  {
+    "id": 6,
+    "name": "Redmi Note 11 4+2GB 128Gb",
+    "priceCUP": 51975,
+    "priceUSD": 165,
+    "src": "img_11.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "x"
+  },
+  {
+    "id": 7,
+    "name": "Redmi Note 12 Global 8+2GB 256Gb",
+    "priceCUP": 69300,
+    "priceUSD": 220,
+    "src": "img_12.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "e"
+  },
+  {
+    "id": 8,
+    "name": "Redmi Note 12R 5G 4+2GB 128 Gb 5G",
+    "priceCUP": 55125,
+    "priceUSD": 175,
+    "src": "img_13.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "a"
+  },
+  {
+    "id": 9,
+    "name": "Redmi Note 12 Global 4+2GB 128 Gb Snapdragon",
+    "priceCUP": 61425,
+    "priceUSD": 195,
+    "src": "img_14.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "c"
+  },
+  {
+    "id": 10,
+    "name": "Redmi Note 12 Global 6+2GB 128 Gb",
+    "priceCUP": 64575,
+    "priceUSD": 205,
+    "src": "img_19.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "r"
+  },
+  {
+    "id": 11,
+    "name": "Redmi 10C 4+4GB 128GB",
+    "priceCUP": 45675,
+    "priceUSD": 145,
+    "src": "img_3.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "f"
+  },
+  {
+    "id": 12,
+    "name": "Redmi 13C 4+2GB 128GB",
+    "priceCUP": 51975,
+    "priceUSD": 165,
+    "src": "img_5.jpg",
+    "category": "Redmi",
+    "quantity": 1,
+    "description": "v"
+  },
+  {
+    "id": 13,
+    "name": "Samsung F13 4+1GB 64Gb",
+    "priceCUP": 51975,
+    "priceUSD": 165,
+    "src": "img_1.jpg",
+    "category": "Samsung",
+    "quantity": 1,
+    "description": "t"
+  },
+  {
+    "id": 14,
+    "name": "Samsung A24 4+4GB 128 Gb",
+    "priceCUP": 69300,
+    "priceUSD": 220,
+    "src": "img_2.jpg",
+    "category": "Samsung",
+    "quantity": 1,
+    "description": "g"
+  },
+  {
+    "id": 15,
+    "name": "Samsung F04 4+4GB 64Gb",
+    "priceCUP": 45675,
+    "priceUSD": 145,
+    "src": "img_4.jpg",
+    "category": "Samsung",
+    "quantity": 1,
+    "description": "b"
+  },
+  {
+    "id": 16,
+    "name": "Samsung A05 4+4GB 128 Gb",
+    "priceCUP": 51975,
+    "priceUSD": 165,
+    "src": "img_21.jpg",
+    "category": "Samsung",
+    "quantity": 1,
+    "description": "y"
+  },
+  {
+    "id": 17,
+    "name": "Samsung A14 4+4GB 128 Gb",
+    "priceCUP": 59850,
+    "priceUSD": 190,
+    "src": "img_15.jpg",
+    "category": "Samsung",
+    "quantity": 1,
+    "description": "hn"
+  },
+  {
+    "id": 18,
+    "name": "Samsung A04e 3+3GB 64GB",
+    "priceCUP": 45675,
+    "priceUSD": 145,
+    "src": "img_16.jpg",
+    "category": "Samsung",
+    "quantity": 1,
+    "description": "u"
+  },
+  {
+    "id": 19,
+    "name": "TecnoSpark Pop 7 2+2GB 64GB",
+    "priceCUP": 36225,
+    "priceUSD": 115,
+    "src": "img_17.jpg",
+    "category": "Tecno",
+    "quantity": 1,
+    "description": "j"
+  },
+  {
+    "id": 20,
+    "name": "TecnoSpark Go 2023 4+3GB 64Gb",
+    "priceCUP": 40950,
+    "priceUSD": 130,
+    "src": "img_18.jpg",
+    "category": "Tecno",
+    "quantity": 1,
+    "description": "i"
+  },
+  {
+    "id": 21,
+    "name": "TecnoSpark 10 Pro Pro 8+8GB 256 Gb",
+    "priceCUP": 56700,
+    "priceUSD": 180,
+    "src": "img_18.jpg",
+    "category": "Tecno",
+    "quantity": 1,
+    "description": "k"
+  },
+  {
+    "id": 22,
+    "name": "TecnoSpark 10C 8+8GB 128Gb",
+    "priceCUP": 45675,
+    "priceUSD": 145,
+    "src": "img_18.jpg",
+    "category": "Tecno",
+    "quantity": 1,
+    "description": "o"
+  },
+  {
+    "id": 23,
+    "name": "TecnoSpark GO 2024 3+3GB 64GB",
+    "priceCUP": 40950,
+    "priceUSD": 130,
+    "src": "img_18.jpg",
+    "category": "Tecno",
+    "quantity": 1,
+    "description": "l"
+  }
+]

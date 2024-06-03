@@ -1,0 +1,80 @@
+.cartProduct--container {
+  padding: 7px;
+  margin: 0 7px 7px 0;
+  font-size: small;
+  min-height: 70px;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas:
+    "quantity name      button"
+    "   .     priceUSD  button"
+    "   .     priceCUP  button";
+  grid-template-columns: auto auto 1fr;
+  background-color: white;
+  border-radius: 7px;
+}
+.cartProduct--quantity {
+  grid-area: quantity;
+  margin-right: 7px;
+  font-size: large;
+  background-color: var(--color1);
+  height: 24px;
+  aspect-ratio: 1/1;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  color: white;
+  user-select: none;
+}
+.cartProduct--container h3 {
+  font-size: larger;
+  grid-area: name;
+}
+.cartProduct__priceUSD {
+  grid-area: priceUSD;
+}
+.cartProduct__priceCUP {
+  grid-area: priceCUP;
+}
+.cartProduct--delete-product {
+  cursor: pointer;
+  border-style: none;
+  grid-area: button;
+  justify-self: end;
+  align-self: center;
+  height: 30px;
+  aspect-ratio: 1/1;
+  font-size: x-large;
+  background-color: inherit;
+  color: rgb(200, 200, 200);
+}
+.iconify--emojione {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+.cactus {
+  fill: var(--color3);
+}
+.sun {
+  fill: #f1f100;
+}
+.sun--ray-in {
+  fill: #ababab;
+}
+.sun--ray-out {
+  fill: #c3c3c3;
+}
+.ball {
+  fill: #8a2222;
+  animation: ball-move 7.7s linear infinite;
+}
+@keyframes ball-move {
+  0% {
+    transform: translateY(80%) translateX(-350%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(80%) translateX(120%) rotate(1370deg);
+  }
+}

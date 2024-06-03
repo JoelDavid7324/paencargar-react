@@ -1,0 +1,9 @@
+.general__container {
+  min-height: 150vh;
+  padding-top: var(--header-height);
+  background-image: linear-gradient(to bottom, var(--color1), #00000080),
+    url(/public//assets/tecno-wallpaper.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
