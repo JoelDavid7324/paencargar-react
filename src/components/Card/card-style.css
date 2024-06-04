@@ -1,11 +1,12 @@
 .cards__container {
   width: 90vw;
+  height: min-content;
   margin: 0 auto;
   padding: 15px;
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  justify-content: space-between;
-  row-gap: 17px;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 13px;
 }
 .product {
   background-color: #ffffff;
@@ -82,4 +83,20 @@
 .product__buttons button:hover {
   background-color: var(--color3);
   color: var(--color2);
+}
+.maximized-image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.maximized-image-overlay img {
+  max-width: 80%;
+  max-height: 80%;
 }

@@ -13,11 +13,11 @@
   display: flex;
   margin: 0 5vw;
 }
-.header div:nth-child(1) {
+.header__text {
   line-height: var(--header-height);
-  font-size: xx-large;
+  font-size: calc(var(--header-height) * 0.4);
 }
-.header div p span {
+.header__text--color {
   color: var(--color1);
 }
 .header div figure {
@@ -27,8 +27,9 @@
 }
 .header div figure p {
   align-self: start;
-  margin-top: 13px;
+  margin-top: 20%;
   color: var(--color1);
+  font-size: small;
 }
 .header div figure img {
   cursor: pointer;

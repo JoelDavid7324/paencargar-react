@@ -1,18 +1,19 @@
 .navbar__findBar {
-  width: 40vw;
-  height: max-content;
+  min-width: 40%;
+  width: fit-content;
   padding: 7px;
   display: flex;
   justify-content: center;
   margin: 3vh auto;
   margin-bottom: 0;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 30px;
 }
 .navbar__findBar--figure {
   height: 5vh;
-  padding-right: 10px;
+  margin: 0 10px;
   display: flex;
+  background-color: rgb(255, 255, 255);
 }
 .navbar__findBar--figure svg {
   height: 100%;
@@ -21,7 +22,7 @@
 .navbar__findBar input {
   flex-grow: 1;
   border-style: none;
-  padding: 0 17px;
+  margin-left: 10px;
   font-size: large;
 }
 .navbar__findBar input:focus {

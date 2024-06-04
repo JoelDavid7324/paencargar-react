@@ -7,7 +7,16 @@
 }
 :root {
   --header-height: 13vh;
-  --color1: #02aff3;
+  --color1: rgb(2, 175, 243);
   --color2: white;
   --color3: #249544;
+}
+
+@media (max-width: 400px) {
+  :root {
+    --header-height: 10vh;
+  }
+  .header div figure p {
+    font-weight: 300;
+  }
 }

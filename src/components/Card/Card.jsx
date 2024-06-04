@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import data from "/src/components/products.json";
+import { useState } from "react";
 import "./card-style.css";
 
 export const Card = ({
@@ -23,33 +23,60 @@ export const Card = ({
       setAllProducts([...allProducts, { ...product, quantity: 1 }]);
     }
   };
+
+  const [maximizedImage, setMaximizedImage] = useState(null);
+
+  const handleImageClick = (product) => {
+    setMaximizedImage(product.src);
+  };
+
+  const handleCloseMaximizedImage = () => {
+    setMaximizedImage(null);
+  };
+
   return (
-    <div className="cards__container">
-      {data.map((product) => (
-        <div className="product" key={product.id}>
-          <figure className="image__container">
-            <img
-              src={`/public/assets/images/${product.src}`}
-              alt={product.name}
-            />
-          </figure>
-          <div className="product__footer">
-            <div className="product__footer--name">
-              <h3>{product.name}</h3>
+    <>
+      <div className="cards__container">
+        {data.map((product) => (
+          <div className="product" key={product.id}>
+            <figure
+              className="image__container"
+              onClick={() => handleImageClick(product)}
+            >
+              <img
+                src={`/public/assets/images/${product.src}`}
+                alt={product.name}
+              />
+            </figure>
+            <div className="product__footer">
+              <div className="product__footer--name">
+                <h3>{product.name}</h3>
+              </div>
+              <p>
+                USD: <span>{product.priceUSD}</span>
+              </p>
+              <p>
+                CUP: <span>{product.priceCUP}</span>
+              </p>
             </div>
-            <p>
-              USD: <span>{product.priceUSD}</span>
-            </p>
-            <p>
-              CUP: <span>{product.priceCUP}</span>
-            </p>
+            <div className="product__buttons">
+              <a href="#">Detalles</a>
+              <button onClick={() => onAddProduct(product)}>Add +</button>
+            </div>
           </div>
-          <div className="product__buttons">
-            <a href="#">Detalles</a>
-            <button onClick={() => onAddProduct(product)}>Add +</button>
-          </div>
+        ))}
+      </div>
+      {maximizedImage && (
+        <div
+          className="maximized-image-overlay"
+          onClick={handleCloseMaximizedImage}
+        >
+          <img
+            src={`/public/assets/images/${maximizedImage}`}
+            alt="Maximized Image"
+          />
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };

@@ -12,7 +12,8 @@
 .shopCart-content {
   margin-top: var(--header-height);
   background-color: #f0f0f0;
-  width: 300px;
+  max-width: 300px;
+  width: 70%;
   height: calc(100vh - var(--header-height));
   padding: 17px;
   display: flex;
@@ -28,7 +29,7 @@
   border-radius: 77px;
   box-shadow: 0 0 0 2px var(--color1);
   color: var(--color2);
-  font-size: larger;
+  font-size: large;
   background-color: var(--color1);
   transition: all 0.1s;
   cursor: pointer;

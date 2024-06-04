@@ -31,9 +31,9 @@ export const Header = ({
   return (
     <>
       <header className="header">
-        <div>
+        <div className="header__text">
           <p>
-            Cell <span className="header__text--orange">xEncargo</span>
+            Cell <span className="header__text--color">xEncargo</span>
           </p>
         </div>
         <div>
