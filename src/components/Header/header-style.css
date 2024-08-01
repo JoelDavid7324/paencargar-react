@@ -1,38 +1,95 @@
 .header {
+  z-index: 1000;
   width: 100vw;
   height: var(--header-height);
-  color: white;
+  color: #ffffff;
   top: 0;
   font-weight: 700;
-  background-color: rgb(34, 34, 34);
+  background-color: #000f21;
   position: fixed;
   display: flex;
   justify-content: space-between;
 }
-.header div {
-  display: flex;
-  margin: 0 5vw;
-}
 .header__text {
+  margin-left: 5vw;
   line-height: var(--header-height);
-  font-size: calc(var(--header-height) * 0.4);
+  font-size: calc(var(--header-height) * 0.57);
+  user-select: none;
+  flex-grow: 1;
 }
 .header__text--color {
   color: var(--color1);
 }
-.header div figure {
+.navBar__buttons {
+  margin-right: 5vw;
+  display: flex;
+}
+.header .navBar__buttons figure {
   padding: 0 0.5vw;
   display: flex;
   align-items: center;
+  user-select: none;
 }
-.header div figure p {
+.header .navBar__buttons figure:nth-child(2) {
+  padding-left: 0;
+}
+.header .navBar__buttons figure p {
   align-self: start;
   margin-top: 20%;
   color: var(--color1);
   font-size: small;
 }
-.header div figure img {
+.header .navBar__buttons figure img {
   cursor: pointer;
   height: calc(var(--header-height) - 5vh);
   object-fit: contain;
+}
+.userLogged--logo {
+  height: calc(var(--header-height) * 0.55);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: #333;
+  color: #dedede;
+  border: solid 1px #dedede;
+  font-size: 20px;
+  font-weight: bold;
+  margin: auto 0.7vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.navbar__findBar {
+  height: calc(var(--header-height) * 0.6);
+  max-width: 400px;
+  padding: 3px;
+  display: flex;
+  margin: auto 0 auto auto;
+  margin-right: 0.5vw;
+  background-color: rgb(255, 255, 255);
+  border-radius: 70px;
+  justify-content: space-between;
+}
+.navbar__findBar--figure {
+  display: flex;
+  margin: auto 0;
+  margin-right: 7px;
+  height: 90%;
+  aspect-ratio: 1/1;
+}
+.navbar__findBar--figure svg {
+  object-fit: contain;
+}
+.navbar__findBar input {
+  background-color: #ffffff00;
+  border-style: none;
+  text-justify: center;
+  margin-left: 10px;
+  font-size: large;
+  width: 80%;
+}
+.navbar__findBar input:focus {
+  outline: none;
 }

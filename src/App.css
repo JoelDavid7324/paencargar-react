@@ -4,19 +4,122 @@
   margin: 0;
   padding: 0;
   font-family: Roboto, Arial, Helvetica, sans-serif;
+  position: relative;
 }
 :root {
   --header-height: 13vh;
-  --color1: rgb(2, 175, 243);
-  --color2: white;
-  --color3: #249544;
+  --color1: #02aff3;
+  --color2: #ffffff;
+  --color3: #29b63f;
+  --color4: #006b9c;
 }
-
-@media (max-width: 400px) {
-  :root {
-    --header-height: 10vh;
+@media (max-width: 900px) {
+  .shopCart-content {
+    height: 77vh;
+    border-bottom-left-radius: 7px;
   }
-  .header div figure p {
-    font-weight: 300;
+  .header__text {
+    margin-left: 4%;
+  }
+  .navBar__buttons {
+    margin-right: 4%;
+  }
+  .header .navBar__buttons figure {
+    padding: 0 1.5vw;
+    align-self: center;
+  }
+  .navbar__findBar {
+    width: 30%;
+  }
+  .navbar__findBar--figure {
+    margin: auto;
+  }
+  .product {
+    row-gap: 4px;
+  }
+  .product,
+  .details {
+    font-size: small;
+  }
+}
+@media (max-width: 440px) {
+  :root {
+    --header-height: 7vh;
+  }
+  .header__text {
+    font-size: calc(var(--header-height) * 0.4);
+  }
+  .header .navBar__buttons figure {
+    height: 23px;
+  }
+  .header .navBar__buttons figure img {
+    height: 23px;
+  }
+  .header .navBar__buttons figure p {
+    font-size: x-small;
+    margin-top: -6.5px;
+  }
+  .navbar__findBar {
+    margin-right: 0.5vw;
+    min-width: 100px;
+    height: 27px;
+    border-radius: 5px;
+  }
+  .navbar__findBar input {
+    font-size: 65%;
+    margin-left: 3px;
+    width: calc(100% - 27px);
+  }
+  .cards__container {
+    width: 91.5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .card {
+    width: 48%;
+  }
+  .details,
+  .product {
+    padding: 10px;
+  }
+  .product {
+    grid-template-rows: 170px repeat(3, auto);
+  }
+  .skeletonContainer {
+    height: 257px;
+    width: 48%;
+  }
+  .product__buttons {
+    --font-size-buttons: 12px;
+  }
+  .product__buttons a {
+    height: 30px;
+  }
+  .product__buttons a img {
+    height: 70%;
+  }
+}
+@media (max-width: 900px) and (min-width: 441px) {
+  .header__text {
+    font-size: calc(var(--header-height) * 0.4);
+  }
+  .navbar__findBar {
+    height: 50%;
+  }
+  .navbar__findBar input {
+    font-size: medium;
+  }
+  .header .navBar__buttons figure {
+    height: 90%;
+  }
+  .header .navBar__buttons figure img {
+    height: 60%;
+  }
+  .cards__container {
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+  .product__footer--price {
+    flex-wrap: wrap;
   }
 }

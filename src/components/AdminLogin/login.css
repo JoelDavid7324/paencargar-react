@@ -1,0 +1,71 @@
+.login-page__container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  background-color: #dedede;
+}
+.login__container {
+  background-color: #ffffff;
+  margin: auto 0;
+  width: 277px;
+  height: 400px;
+  padding: 30px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.login__title {
+  width: 100%;
+  font-size: 30px;
+  user-select: none;
+}
+.login__user-name {
+  height: 20px;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+.login__input-container {
+  margin-bottom: 10px;
+  width: 100%;
+}
+.login__input--text {
+  font-size: 13px;
+  color: #1300a3;
+  user-select: none;
+}
+.login__input {
+  width: 100%;
+  border: none;
+  border-bottom: 0.7px solid #1300a3;
+  height: 1.5lh;
+  font-size: 17px;
+  padding: 13px 1px;
+  outline: none;
+}
+.login__help {
+  font-size: 13px;
+  margin-top: auto;
+  user-select: none;
+}
+.login__help span {
+  color: #1300a3;
+  cursor: pointer;
+}
+.login__button {
+  border-style: none;
+  margin-top: 13px;
+  height: 37px;
+  font-size: 17px;
+  border-radius: 77px;
+  color: #ffffff;
+  background-size: 300%;
+  background-image: linear-gradient(to right, #1300a38c, #1300a3);
+  transition: background-position 0.3s;
+  user-select: none;
+}
+.login__button:hover {
+  background-position: 100%;
+}

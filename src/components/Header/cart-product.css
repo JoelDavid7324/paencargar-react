@@ -23,7 +23,7 @@
   line-height: 24px;
   text-align: center;
   border-radius: 50%;
-  color: white;
+  color: #ffffff;
   user-select: none;
 }
 .cartProduct--container h3 {
@@ -46,7 +46,7 @@
   aspect-ratio: 1/1;
   font-size: x-large;
   background-color: inherit;
-  color: rgb(200, 200, 200);
+  color: #c8c8c8;
 }
 .iconify--emojione {
   width: 100%;

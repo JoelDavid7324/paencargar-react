@@ -1,15 +1,32 @@
-import { createContext, useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { createContext, useState } from "react";
 
-export const DataContext = createContext();
+const AppContext = createContext();
 
-export const DataProvider = (props) => {
-  const [productos, setProductos] = useState([]);
-  useEffect(() => {
-    const producto = Data;
-    /*aqui va el json */ setProductos(producto);
-  }, []);
-  const value = { productos: [productos] };
+const AppProvider = ({ children }) => {
+  const [allProducts, setAllProducts] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [countProducts, setCountProducts] = useState(0);
+  const [searchBarContent, setSearchBarContent] = useState("");
+  const [userLogged, setUserLogged] = useState(null);
   return (
-    <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
+    <AppContext.Provider
+      value={{
+        allProducts,
+        setAllProducts,
+        total,
+        setTotal,
+        countProducts,
+        setCountProducts,
+        searchBarContent,
+        setSearchBarContent,
+        userLogged,
+        setUserLogged,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
   );
 };
+
+export { AppProvider, AppContext };
