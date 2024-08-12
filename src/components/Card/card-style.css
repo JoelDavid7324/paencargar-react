@@ -80,6 +80,7 @@
 .product__footer--price {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .product__footer--price :nth-child(2):not(span) {
   color: var(--color4);
@@ -92,6 +93,7 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   border-style: none;
+  height: min-content;
 }
 .product__buttons a {
   flex-grow: 1;

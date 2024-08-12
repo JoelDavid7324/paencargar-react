@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { Skeleton } from "../Skeleton/Skeleton";
-import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/DataProvider";
 import "./card-style.css";
 import "./card-details.css";
+import { CardCrudSection } from "../EditSection/CardCrudSection";
 
 export const Card = () => {
   const {
@@ -13,6 +14,13 @@ export const Card = () => {
     countProducts,
     setCountProducts,
     searchBarContent,
+    editMode,
+    setEditMode,
+    deleteMode,
+    setDeleteMode,
+    setEditCardSelected,
+    setDeleteCardSelected,
+    userLogged,
   } = useContext(AppContext);
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -31,7 +39,7 @@ export const Card = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://script.googleusercontent.com/macros/echo?user_content_key=q36oiatVXdUEe4BkDAY65GFvwS20U6huv7rUXoAE2pJrOHCHJ-tiC_pOR5_gvu_OL7uiv_gglIl1gHiizqdWrwPirxPQTaMAOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa63rTZALqSs4DlodnoXSSJxtW-f0bVkvTatF7fjRD-vB81O14w-uMMfkcloVXALZNtI9TC-efgqAHsPEI1nLYZlbkTmATlLrYzW0R4C0zRj0EH6UNsB8tgZcjxerJjN6Y7aG5hYyu_zwiG-Ptr_29DVZUa2ExguREMADZHlfGOV3QU1skmrvPE2eP8ANzlfPGg&lib=MjHwBxJPAVXwjO4qyNMvubqaW5K_fYpRo"
+          "https://script.googleusercontent.com/macros/echo?user_content_key=fpzuVO4Sl7tz97qy0NlLM_LjHZBMvB7agk86IT82_0r6fcOZQzvtOB0Oviuo41iby7QuV2ComSVHye3yqPmfhbtAmqqRRm2COJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa8CMjJTxE4GugBg4L04ssKm5QWc-uMQD1lSrB1gr6ObSwW3S52q2SkaRop5-JG4aWwkdtMpW4CIIMO0iaY8LWjDWIj876d3oFuhynpbHqv9YF2Cn5Hl8w61Oh9fX6njrfQ&lib=Mt9DcNd5Hayo7C8_pc2MjwwFAR-wyTGep"
         );
         const newData = await response.json();
         setData(newData);
@@ -50,9 +58,9 @@ export const Card = () => {
 
   useEffect(() => {
     const filteredProducts = data.filter((product) => {
-      return product.title
-        .toLowerCase()
-        .includes(searchBarContent.toLowerCase());
+      return product.Titulo.toLowerCase().includes(
+        searchBarContent.toLowerCase()
+      );
     });
     setFilteredData(filteredProducts);
   }, [searchBarContent, data, setFilteredData]);
@@ -74,12 +82,8 @@ export const Card = () => {
   };
 
   const buyNow = (product) => {
-    const whatsappMessage = `Hola, estoy interesado en comprar ${product.title} ${product.description}`;
+    const whatsappMessage = `Hola, estoy interesado en comprar ${product.Titulo} ${product.Descripcion}`;
     window.open(`https://wa.me/+58468600?text=${whatsappMessage}`);
-  };
-
-  const randomID = () => {
-    return Math.floor(Math.random() * 99999999);
   };
 
   const handleToDetailsClick = (e) => {
@@ -98,6 +102,20 @@ export const Card = () => {
     } else {
       productDiv.style.transform = "rotateY(0deg)";
       detailsDiv.style.transform = "rotateY(180deg)";
+    }
+  };
+
+  const navigate = useNavigate();
+
+  const handleCardClick = (product) => {
+    if (editMode) {
+      setEditCardSelected(product);
+      setEditMode(false);
+      navigate("/cardEdit");
+    } else if (deleteMode) {
+      setDeleteCardSelected(product);
+      setDeleteMode(false);
+      navigate("/cardDelete");
     }
   };
 
@@ -120,7 +138,11 @@ export const Card = () => {
           </>
         ) : (
           filteredData.map((product) => (
-            <div className="card" key={randomID()}>
+            <div
+              className="card"
+              key={product.id}
+              onClick={() => handleCardClick(product)}
+            >
               <div className="details">
                 <div
                   className="backFromDetails"
@@ -130,39 +152,37 @@ export const Card = () => {
                 </div>
                 <figure className="details__image-container">
                   <img
-                    src={`https://paencargar.com/cell/${product.image}`}
-                    alt={product.title}
+                    src={`http://pruebas.enqba.com/image/${product.Imagen}`}
+                    alt={product.Titulo}
                   />
                 </figure>
-                <p className="details__product-title">{product.title}</p>
+                <p className="details__product-title">{product.Titulo}</p>
                 <p className="details__product-description">
-                  {product.description}
+                  {product.Descripcion}
                 </p>
-                <div className="details__info">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quidem in libero id, possimus repudiandae consequuntur eaque,
-                  cum, totam eius laboriosam inventore porro deleniti iure
-                  itaque odit ad harum ipsum pariatur?
-                </div>
+                <div className="details__info">{product.Detalles}</div>
               </div>
               <div className="product">
                 <figure className="image__container">
                   <img
-                    src={`https://paencargar.com/cell/${product.image}`}
-                    alt={product.title}
+                    src={`http://pruebas.enqba.com/image/${product.Imagen}`}
+                    alt={product.Titulo}
                   />
                 </figure>
                 <div className="product__footer">
                   <div className="product__footer--name">
-                    <h3>{product.title}</h3>
-                    <h3>{product.description}</h3>
+                    <h3>{product.Titulo}</h3>
+                    <h3>{product.Descripcion}</h3>
                   </div>
                   <div className="product__footer--price">
                     <p>
-                      USD: <span>{"$" + product.price}</span>
+                      USD: <span>{product.Precio}</span>
                     </p>
                     <p>
-                      MLC: <span>{product.mlc}</span>
+                      MLC: <span>{product.MLC}</span>
+                    </p>
+                    <p>
+                      CUP: <span>{"$" + product.CUP}</span>
                     </p>
                   </div>
                 </div>
@@ -181,6 +201,7 @@ export const Card = () => {
                 >
                   <span>Detalles</span>
                 </div>
+                {userLogged ? <CardCrudSection /> : ""}
               </div>
             </div>
           ))

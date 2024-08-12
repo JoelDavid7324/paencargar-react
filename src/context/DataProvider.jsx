@@ -9,6 +9,11 @@ const AppProvider = ({ children }) => {
   const [countProducts, setCountProducts] = useState(0);
   const [searchBarContent, setSearchBarContent] = useState("");
   const [userLogged, setUserLogged] = useState(null);
+  const [editCardSelected, setEditCardSelected] = useState(null);
+  const [deleteCardSelected, setDeleteCardSelected] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+  const [deleteMode, setDeleteMode] = useState(false);
+
   return (
     <AppContext.Provider
       value={{
@@ -22,6 +27,14 @@ const AppProvider = ({ children }) => {
         setSearchBarContent,
         userLogged,
         setUserLogged,
+        editCardSelected,
+        setEditCardSelected,
+        deleteCardSelected,
+        setDeleteCardSelected,
+        editMode,
+        setEditMode,
+        deleteMode,
+        setDeleteMode,
       }}
     >
       {children}

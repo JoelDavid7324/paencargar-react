@@ -12,6 +12,7 @@
   --color2: #ffffff;
   --color3: #29b63f;
   --color4: #006b9c;
+  --color5: #b63f29;
 }
 @media (max-width: 900px) {
   .shopCart-content {
@@ -42,6 +43,26 @@
     font-size: small;
   }
 }
+@media (max-width: 900px) and (min-width: 441px) {
+  .header__text {
+    font-size: calc(var(--header-height) * 0.4);
+  }
+  .navbar__findBar {
+    height: 50%;
+  }
+  .navbar__findBar input {
+    font-size: medium;
+  }
+  .header .navBar__buttons figure {
+    height: 90%;
+  }
+  .header .navBar__buttons figure img {
+    height: 60%;
+  }
+  .cards__container {
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+}
 @media (max-width: 440px) {
   :root {
     --header-height: 7vh;
@@ -69,6 +90,9 @@
     font-size: 65%;
     margin-left: 3px;
     width: calc(100% - 27px);
+  }
+  .cardEdit__container {
+    left: calc(100% - 300px);
   }
   .cards__container {
     width: 91.5%;
@@ -98,28 +122,5 @@
   }
   .product__buttons a img {
     height: 70%;
-  }
-}
-@media (max-width: 900px) and (min-width: 441px) {
-  .header__text {
-    font-size: calc(var(--header-height) * 0.4);
-  }
-  .navbar__findBar {
-    height: 50%;
-  }
-  .navbar__findBar input {
-    font-size: medium;
-  }
-  .header .navBar__buttons figure {
-    height: 90%;
-  }
-  .header .navBar__buttons figure img {
-    height: 60%;
-  }
-  .cards__container {
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  }
-  .product__footer--price {
-    flex-wrap: wrap;
   }
 }

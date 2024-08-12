@@ -1,0 +1,89 @@
+.createSectionContainer {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+  padding: 5vw;
+}
+.createSectionEditZone {
+  display: flex;
+  height: 460px;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.createSection--title {
+  color: #000f21;
+}
+.createSection--form {
+  overflow-y: scroll;
+  height: 100%;
+  padding-bottom: 40px;
+  width: 45%;
+}
+.createSection--form__element {
+  border-style: none;
+  width: 100%;
+  padding: 3px;
+}
+.createSection--form__element:focus {
+  outline: none;
+  border-bottom: 1px solid #000000;
+}
+.createSection--form__goDown {
+  position: absolute;
+  width: 45%;
+  height: 37px;
+  top: 423px;
+  background-color: #dedede;
+}
+.createSection--form__goDown img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.createSection--cardView {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 100%;
+}
+.cardCreateSection--container {
+  width: 100%;
+  border-radius: 7px;
+}
+.cardCreateSectionProduct {
+  border-radius: 7px;
+}
+.cardCreateSectionDetails {
+  border-radius: 7px;
+  top: 0;
+}
+.createSection--controls {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 90px;
+}
+.createSection--controls__element {
+  height: 30%;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  user-select: none;
+  width: 80%;
+  margin: 0 auto;
+  transition: all 0.2s;
+}
+.createSection--controls__element:nth-child(1) {
+  color: #ffffff;
+  background-color: #db0f0f;
+}
+.createSection--controls__element:nth-child(2) {
+  color: #ffffff;
+  background-color: #01bb1d;
+}
+.createSection--controls__element:nth-child(3) {
+  color: #ffffff;
+  background-color: #0287f3;
+}

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/DataProvider";
 import "./login.css";
@@ -7,33 +7,51 @@ export const Login = () => {
   const { setUserLogged } = useContext(AppContext);
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
+  const [inputUserName, setInputUserName] = useState("");
+  const [inputUserPassword, setInputUserPassword] = useState("");
 
-  const users = [
-    { name: "chicho", password: "12345" },
-    { name: "hola", password: "67890" },
-    { name: "pancho", password: "12345" },
-    { name: "hi", password: "67890" },
-  ];
+  const [displayName, setDisplayName] = useState(null);
+
+  const [userArray, setUserArray] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbxObhK75B26JYFY1q2qHWIBlzC23oQn3eDIhXQ5IEL2tlHbRpifG_M-dDXCq5rXNZPw9w/exec?&pg=2&func=alltodo",
+          {
+            signal: AbortController.signal,
+          }
+        );
+        const data = await response.json();
+        setUserArray(data);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    if (!userArray && !error) {
+      fetchUsers();
+    }
+  }, [userArray, error]);
 
   const handleLogin = () => {
-    const foundUser = users.find((u) => u.name === username);
+    const foundUser = userArray.find((u) => u.user === inputUserName);
     if (!foundUser) {
       console.log("No se ha encontrado el usuario");
-    } else if (foundUser.password !== password) {
+    } else if (foundUser.password != inputUserPassword) {
       document.querySelector(".login__inputPassword").value = "";
       document
         .querySelector(".login__inputPassword")
         .setAttribute("placeHolder", "Error en la contraseña");
-      console.log("Problemas con la contraseña");
+      setInputUserPassword("");
     } else {
       if (Object.keys(foundUser).length > 0) {
-        // Verifica si el objeto no es vacío
-        setUserLogged(foundUser.name);
+        setUserLogged(foundUser.user);
       } else {
-        setUserLogged(null); // Si el objeto es vacío, setea userLogged a null
+        console.log("se entro tambien ");
+        setUserLogged(null);
       }
       navigate("/");
       console.log("El usuario accedió correctamente");
@@ -42,16 +60,16 @@ export const Login = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    if (name === "name") {
-      setUsername(value);
-      const foundUser = users.find((u) => u.name === value);
+    if (name === "user") {
+      setInputUserName(value);
+      const foundUser = userArray.find((u) => u.user === value);
       if (foundUser) {
-        setDisplayName(foundUser.name);
+        setDisplayName(foundUser.user);
       } else {
         setDisplayName("");
       }
     } else if (name === "password") {
-      setPassword(value);
+      setInputUserPassword(value);
     }
   };
 
@@ -69,7 +87,7 @@ export const Login = () => {
           <p className="login__input--text">Nombre</p>
           <input
             type="text"
-            name="name"
+            name="user"
             onChange={handleInputChange}
             className="login__input"
           />

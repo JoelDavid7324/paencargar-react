@@ -17,7 +17,6 @@ export const Header = () => {
     setCountProducts,
     setSearchBarContent,
     userLogged,
-    setUserLogged,
   } = useContext(AppContext);
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
@@ -46,6 +45,19 @@ export const Header = () => {
   const handleLoginClick = () => {
     navigate("/login");
   };
+
+  const handleCardCrudClick = () => {
+    const editSection = document.querySelector(".cardEdit__container");
+    if (!editSection.style.top) {
+      editSection.style.top = "-150px";
+    }
+    if (editSection.style.top === "var(--header-height)") {
+      editSection.style.top = "-150px";
+    } else {
+      editSection.style.top = "var(--header-height)";
+    }
+  };
+
   return (
     <>
       <header className="header">
@@ -79,7 +91,7 @@ export const Header = () => {
           ) : (
             <div
               className="userLogged--logo"
-              onClick={() => setUserLogged(null)}
+              onClick={() => handleCardCrudClick()}
             >
               <p>{userLogged.charAt(0).toUpperCase()}</p>
             </div>
@@ -121,12 +133,12 @@ export const Header = () => {
                 allProducts.map((product) => (
                   <div className="cartProduct--container" key={product.id}>
                     <p className="cartProduct--quantity">{product.quantity}</p>
-                    <h3>{product.title + " " + product.description}</h3>
+                    <h3>{product.Titulo + " " + product.Descripcion}</h3>
                     <p className="cartProduct__priceUSD">
-                      Precio USD: <span>{product.price}</span>
+                      Precio USD: <span>{product.Precio}</span>
                     </p>
                     <p className="cartProduct__priceCUP">
-                      Precio MLC: <span>{product.mlc}</span>
+                      Precio MLC: <span>{product.MLC}</span>
                     </p>
                     <button
                       className="cartProduct--delete-product"
@@ -218,7 +230,7 @@ export const Header = () => {
                 if (allProducts.length > 0) {
                   const cartContents = allProducts
                     .map((product) => {
-                      return `${product.title + " " + product.description} (x${
+                      return `${product.Titulo + " " + product.Descripcion} (x${
                         product.quantity
                       })`;
                     })
