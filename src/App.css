@@ -59,9 +59,6 @@
   .header .navBar__buttons figure img {
     height: 60%;
   }
-  .cards__container {
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  }
 }
 @media (max-width: 440px) {
   :root {
@@ -108,7 +105,10 @@
     padding: 10px;
   }
   .product {
-    grid-template-rows: 170px repeat(3, auto);
+    grid-template-rows: 170px auto repeat(2, min-content);
+  }
+  .product__footer--price :nth-child(n):not(:nth-child(2), span) {
+    margin-right: 37px;
   }
   .skeletonContainer {
     height: 257px;
@@ -122,5 +122,40 @@
   }
   .product__buttons a img {
     height: 70%;
+  }
+  .userLoggedOptionsTitle {
+    padding: 5vw;
+    padding-top: 0;
+  }
+
+  .createSectionContainer {
+    padding: 1vw 5vw;
+  }
+  .createSection--controls {
+    margin-top: 17px;
+    width: 100%;
+  }
+  .createSection--form {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .createSection--cardView {
+    width: 45%;
+    margin: 0;
+  }
+  .createSection--form__element {
+    margin: 0;
+  }
+  .createSection--form :nth-child(2n) {
+    margin-bottom: auto;
+  }
+  .createSection--form :nth-child(2n + 1) {
+    margin-bottom: 3px;
+  }
+  .createSection--form .createSection--form__otro {
+    margin-bottom: 0px;
   }
 }

@@ -48,13 +48,17 @@ export const Header = () => {
 
   const handleCardCrudClick = () => {
     const editSection = document.querySelector(".cardEdit__container");
+    const titleCardEditDiv = document.querySelector(".userLoggedOptionsTitle");
     if (!editSection.style.top) {
-      editSection.style.top = "-150px";
+      editSection.style.top = `calc(-205px + var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`;
     }
-    if (editSection.style.top === "var(--header-height)") {
-      editSection.style.top = "-150px";
+    if (
+      editSection.style.top ===
+      `calc(var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`
+    ) {
+      editSection.style.top = `calc(-205px + var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`;
     } else {
-      editSection.style.top = "var(--header-height)";
+      editSection.style.top = `calc(var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`;
     }
   };
 

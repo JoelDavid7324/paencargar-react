@@ -1,6 +1,26 @@
+.userLoggedOptionsTitle {
+  padding: 0 5vw;
+  padding-bottom: 2vw;
+  width: 100%;
+  height: min-content;
+  position: fixed;
+  margin-top: -0.1px;
+  font-size: large;
+  z-index: 1900;
+  background-color: #000f21;
+  color: #ffffff;
+  user-select: none;
+}
+.cards__editModeContainer {
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  z-index: 1500;
+}
 .cardEdit__container {
   right: calc(300px + var(--header-height));
-  z-index: 700;
+  z-index: 1700;
   position: fixed;
   top: -150px;
   transition: top 0.3s;

@@ -1,5 +1,5 @@
 .header {
-  z-index: 1000;
+  z-index: 1900;
   width: 100vw;
   height: var(--header-height);
   color: #ffffff;

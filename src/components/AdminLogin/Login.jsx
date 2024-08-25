@@ -54,7 +54,6 @@ export const Login = () => {
         setUserLogged(null);
       }
       navigate("/");
-      console.log("El usuario accedió correctamente");
     }
   };
 

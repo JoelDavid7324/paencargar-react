@@ -13,7 +13,7 @@
     " info  info "
     " back  back";
   transition: transform 0.3s;
-  grid-template-columns: auto auto;
+  grid-template-columns: fill auto;
   grid-template-rows: max-content max-content auto min-content;
 }
 
@@ -43,6 +43,8 @@
   display: flex;
   align-self: center;
   height: 100%;
+  max-width: 67px;
+  object-fit: cove;
 }
 .details__image-container img {
   margin: auto 0;

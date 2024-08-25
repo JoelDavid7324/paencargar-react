@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/DataProvider";
 import "./card-style.css";
 import "./card-details.css";
-import { CardCrudSection } from "../EditSection/CardCrudSection";
 
 export const Card = () => {
   const {
@@ -14,13 +13,13 @@ export const Card = () => {
     countProducts,
     setCountProducts,
     searchBarContent,
+    userLogged,
     editMode,
     setEditMode,
     deleteMode,
     setDeleteMode,
     setEditCardSelected,
     setDeleteCardSelected,
-    userLogged,
   } = useContext(AppContext);
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -119,8 +118,34 @@ export const Card = () => {
     }
   };
 
+  useEffect(() => {
+    const cardContainer = document.querySelector(".cards__container");
+    if (userLogged || editMode || deleteMode) {
+      const titleElement = document.querySelector(".userLoggedOptionsTitle");
+      const height = titleElement.offsetHeight;
+      cardContainer.style.marginTop = `${height}px`;
+    } else {
+      cardContainer.style.marginTop = "0vh";
+    }
+  }, [deleteMode, editMode, userLogged]);
+
   return (
     <>
+      {userLogged && !editMode && !deleteMode ? (
+        <div className="userLoggedOptionsTitle">
+          Toque la letra de su nombre para desplegar las opciones
+        </div>
+      ) : userLogged && editMode ? (
+        <div className="userLoggedOptionsTitle">
+          Toque la tarjeta del producto que desea editar
+        </div>
+      ) : userLogged && deleteMode ? (
+        <div className="userLoggedOptionsTitle">
+          Toque la tarjeta del producto que desea eliminar
+        </div>
+      ) : (
+        ""
+      )}
       <div className="cards__container">
         {isLoading ? (
           <>
@@ -201,7 +226,6 @@ export const Card = () => {
                 >
                   <span>Detalles</span>
                 </div>
-                {userLogged ? <CardCrudSection /> : ""}
               </div>
             </div>
           ))
