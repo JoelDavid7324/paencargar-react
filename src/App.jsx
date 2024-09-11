@@ -1,4 +1,3 @@
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { Card } from "./components/Card/Card";
@@ -9,6 +8,7 @@ import { CardCrudSection } from "./components/EditSection/CardCrudSection";
 import { CreateSection } from "./components/EditSection/CreateSection";
 import { EditSection } from "./components/EditSection/EditSection";
 import { PrivateRoutes, PublicRoutes } from "./components/Router/Router";
+import "./App.css";
 
 function App() {
   return (

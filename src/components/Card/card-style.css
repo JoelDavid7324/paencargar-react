@@ -2,21 +2,26 @@
   width: 90vw;
   height: min-content;
   margin: 0 auto;
-  padding: 13px 0;
+  padding: 3px 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .category--title {
   margin-left: 13px;
+  font-size: 33px;
+  margin-bottom: 3px;
+  color: #000f21;
 }
 .category--container {
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  row-gap: 24px;
+  row-gap: 17px;
+  margin-bottom: 24px;
 }
 .card {
-  width: 190px;
+  width: 90%;
   border-radius: 5px;
   overflow: hidden;
   z-index: 1600;
@@ -26,12 +31,13 @@
   transform: rotateY(0deg);
   backface-visibility: hidden;
   padding: 13px;
-  background-color: #ffffff;
+  --product-background: #f7f7f7;
+  background-color: var(--product-background);
   display: grid;
   width: 100%;
   height: 100%;
   grid-template-rows: 230px repeat(3, auto);
-  row-gap: 7px;
+  row-gap: 3px;
   transition: transform 0.3s;
   user-select: none;
 }
@@ -41,17 +47,17 @@
   display: flex;
   justify-content: center;
   font-size: 15px;
-  color: #ffffff;
-  background-color: var(--color1);
-  border: solid 1px var(--color1);
+  color: var(--product-background);
+  background-color: var(--color4);
+  border: solid 1px var(--color4);
   border-radius: 5px;
   transition: all 0.2s;
   user-select: none;
   cursor: pointer;
 }
 .toDetails:hover {
-  color: var(--color1);
-  background-color: #ffffff;
+  color: var(--color4);
+  background-color: var(--product-background);
 }
 .toDetails span {
   margin: auto 0;
@@ -61,13 +67,11 @@
   width: 100%;
   justify-content: center;
   overflow: hidden;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
   user-select: none;
 }
 .image__container img {
-  width: 100%;
   object-fit: contain;
+  width: 100%;
   z-index: 500;
   user-select: none;
 }
@@ -93,7 +97,7 @@
   font-size: 12px;
 }
 .product__footer--price :nth-child(n):not(:nth-child(2), span) {
-  margin-right: 17px;
+  margin-right: 27px;
 }
 .product__footer--price :nth-child(2):not(span) {
   color: var(--color4);
@@ -126,21 +130,24 @@
   margin: auto 0;
 }
 .product__buttons a:hover {
-  background-color: var(--color2);
+  background-color: var(--product-background);
 }
 .product__buttons button {
   flex-grow: 0.2;
+  height: 27px;
   font-size: var(--font-size-buttons);
-  background-color: var(--color2);
-  border: solid 1px var(--color4);
-  color: var(--color4);
+  background-color: var(--product-background);
+  border: solid 1px var(--color1);
+  color: var(--color1);
   border-radius: 5px;
   margin-right: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s;
   user-select: none;
   cursor: pointer;
 }
-.product__buttons button:hover {
-  background-color: var(--color4);
-  color: var(--color2);
+.product__buttons button img {
+  height: 80%;
 }

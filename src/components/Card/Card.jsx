@@ -19,7 +19,7 @@ export const Card = () => {
     deleteMode,
     setDeleteMode,
     setEditCardSelected,
-    setDeleteCardSelected,
+    setIDarray4Verify,
   } = useContext(AppContext);
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -27,6 +27,10 @@ export const Card = () => {
   const [isLoading, setIsLoading] = useState(true);
   const cacheKey = "cardsData";
   const cacheRef = useRef(null);
+
+  useEffect(() => {
+    setIDarray4Verify(data.map(product => product.id))
+  }, [data, setIDarray4Verify])
 
   useEffect(() => {
     const cachedData = localStorage.getItem(cacheKey);
@@ -44,6 +48,7 @@ export const Card = () => {
         setData(newData);
         localStorage.setItem(cacheKey, JSON.stringify(newData));
         setIsLoading(false);
+        console.log("JSON reloaded")
       } catch (error) {
         console.error("Error fetching data:", error);
         setIsLoading(false);
@@ -112,9 +117,15 @@ export const Card = () => {
       setEditMode(false);
       navigate("/cardEdit");
     } else if (deleteMode) {
-      setDeleteCardSelected(product);
+      const url = `https://script.google.com/macros/s/AKfycbxiWv1Soc2Bz5qgLf7R7gDzf5DolBRMyeEMmi-hplKUqAl6MQ46OCCJdE858mxP1WXA9w/exec?&pg=1&func=Delete&id=${product.id}`;
+
+      console.log(url)
+
+      let xhttp = new XMLHttpRequest();
+      xhttp.open("GET", url, true);
+      xhttp.send();
+
       setDeleteMode(false);
-      navigate("/cardDelete");
     }
   };
 
@@ -124,10 +135,26 @@ export const Card = () => {
       const titleElement = document.querySelector(".userLoggedOptionsTitle");
       const height = titleElement.offsetHeight;
       cardContainer.style.marginTop = `${height}px`;
-    } else {
-      cardContainer.style.marginTop = "0vh";
-    }
+    } else cardContainer.style.marginTop = "0vh";
   }, [deleteMode, editMode, userLogged]);
+
+  const [categoryTitle, setCategoryTitle] = useState([]);
+
+  useEffect(() => {
+    const categorias = {};
+    filteredData.forEach((product) => {
+      if (!categorias[product.Categoria]) categorias[product.Categoria] = [];
+      categorias[product.Categoria].push(product);
+    });
+    const sortedCategories = Object.keys(categorias).sort((a, b) =>
+      a.localeCompare(b)
+    );
+    const sortedCategoryTitle = {};
+    sortedCategories.forEach((category) => {
+      sortedCategoryTitle[category] = categorias[category];
+    });
+    setCategoryTitle(sortedCategoryTitle);
+  }, [filteredData]);
 
   return (
     <>
@@ -162,72 +189,81 @@ export const Card = () => {
             <Skeleton></Skeleton>
           </>
         ) : (
-          filteredData.map((product) => (
-            <div
-              className="card"
-              key={product.id}
-              onClick={() => handleCardClick(product)}
-            >
-              <div className="details">
-                <div
-                  className="backFromDetails"
-                  onClick={(e) => handleToDetailsClick(e)}
-                >
-                  Volver
-                </div>
-                <figure className="details__image-container">
-                  <img
-                    src={`http://pruebas.enqba.com/image/${product.Imagen}`}
-                    alt={product.Titulo}
-                  />
-                </figure>
-                <p className="details__product-title">{product.Titulo}</p>
-                <p className="details__product-description">
-                  {product.Descripcion}
-                </p>
-                <div className="details__info">{product.Detalles}</div>
-              </div>
-              <div className="product">
-                <figure className="image__container">
-                  <img
-                    src={`http://pruebas.enqba.com/image/${product.Imagen}`}
-                    alt={product.Titulo}
-                  />
-                </figure>
-                <div className="product__footer">
-                  <div className="product__footer--name">
-                    <h3>{product.Titulo}</h3>
-                    <h3>{product.Descripcion}</h3>
+          Object.keys(categoryTitle).map((category) => (
+            <>
+              <h2 className="category--title">{category}</h2>
+              <div className="category--container" key={category}>
+                {categoryTitle[category].map((product) => (
+                  <div
+                    className="card"
+                    key={product.id}
+                    onClick={() => handleCardClick(product)}
+                  >
+                    <div className="details">
+                      <div
+                        className="backFromDetails"
+                        onClick={(e) => handleToDetailsClick(e)}
+                      >
+                        Volver
+                      </div>
+                      <figure className="details__image-container">
+                        <img
+                          src={`http://pruebas.enqba.com/image/${product.Imagen}`}
+                          alt={product.Titulo}
+                        />
+                      </figure>
+                      <p className="details__product-title">{product.Titulo}</p>
+                      <p className="details__product-description">
+                        {product.Descripcion}
+                      </p>
+                      <div className="details__info">{product.Detalles}</div>
+                    </div>
+                    <div className="product">
+                      <figure className="image__container">
+                        <img
+                          src={`http://pruebas.enqba.com/image/${product.Imagen}`}
+                          alt={product.Titulo}
+                        />
+                      </figure>
+                      <div className="product__footer">
+                        <div className="product__footer--name">
+                          <h3>{product.Titulo}</h3>
+                          <h3>{product.Descripcion}</h3>
+                        </div>
+                        <div className="product__footer--price">
+                          <p>
+                            USD: <span>{product.Precio}</span>
+                          </p>
+                          <p>
+                            MLC: <span>{product.MLC}</span>
+                          </p>
+                          <p>
+                            CUP: <span>{"$" + product.CUP}</span>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="product__buttons">
+                        <a onClick={() => buyNow(product)}>
+                          <img
+                            src="https://seeklogo.com/images/W/whatsapp-icon-logo-6E793ACECD-seeklogo.com.png"
+                            alt="whatsapp ico "
+                          />
+                        </a>
+                        <button onClick={() => onAddProduct(product)}>
+                          <img src="./assets/shopping-cart.svg" alt="Add" />+
+                        </button>
+                      </div>
+                      <div
+                        className="toDetails"
+                        onClick={(e) => handleToDetailsClick(e)}
+                      >
+                        <span>Detalles</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="product__footer--price">
-                    <p>
-                      USD: <span>{product.Precio}</span>
-                    </p>
-                    <p>
-                      MLC: <span>{product.MLC}</span>
-                    </p>
-                    <p>
-                      CUP: <span>{"$" + product.CUP}</span>
-                    </p>
-                  </div>
-                </div>
-                <div className="product__buttons">
-                  <a onClick={() => buyNow(product)}>
-                    <img
-                      src="https://seeklogo.com/images/W/whatsapp-icon-logo-6E793ACECD-seeklogo.com.png"
-                      alt="whatsapp ico "
-                    />
-                  </a>
-                  <button onClick={() => onAddProduct(product)}>Add +</button>
-                </div>
-                <div
-                  className="toDetails"
-                  onClick={(e) => handleToDetailsClick(e)}
-                >
-                  <span>Detalles</span>
-                </div>
+                ))}
               </div>
-            </div>
+            </>
           ))
         )}
       </div>

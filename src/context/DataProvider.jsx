@@ -10,9 +10,9 @@ const AppProvider = ({ children }) => {
   const [searchBarContent, setSearchBarContent] = useState("");
   const [userLogged, setUserLogged] = useState(null);
   const [editCardSelected, setEditCardSelected] = useState(null);
-  const [deleteCardSelected, setDeleteCardSelected] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [deleteMode, setDeleteMode] = useState(false);
+  const [iDarray4Verify, setIDarray4Verify] = useState([]);
 
   return (
     <AppContext.Provider
@@ -29,12 +29,12 @@ const AppProvider = ({ children }) => {
         setUserLogged,
         editCardSelected,
         setEditCardSelected,
-        deleteCardSelected,
-        setDeleteCardSelected,
         editMode,
         setEditMode,
         deleteMode,
         setDeleteMode,
+        iDarray4Verify,
+        setIDarray4Verify,
       }}
     >
       {children}

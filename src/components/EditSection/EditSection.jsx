@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/DataProvider";
+import { CrudFunctions } from "./CrudFunction";
 export const EditSection = () => {
   const { editCardSelected } = useContext(AppContext);
 
@@ -43,24 +44,6 @@ export const EditSection = () => {
     setProduct({ ...product, [name]: value });
   };
 
-  const handleToDetailsClick = () => {
-    const productDiv = document.querySelector(".cardCreateSectionProduct");
-    const detailsDiv = document.querySelector(".cardCreateSectionDetails");
-    if (!productDiv.style.transform) {
-      productDiv.style.transform = "rotateY(0deg)";
-    }
-    if (!detailsDiv.style.transform) {
-      detailsDiv.style.transform = "rotateY(180deg)";
-    }
-    if (productDiv.style.transform === "rotateY(0deg)") {
-      productDiv.style.transform = "rotateY(180deg)";
-      detailsDiv.style.transform = "rotateY(360deg)";
-    } else {
-      productDiv.style.transform = "rotateY(0deg)";
-      detailsDiv.style.transform = "rotateY(180deg)";
-    }
-  };
-
   const handleBackClick = () => {
     navigate("/");
   };
@@ -83,92 +66,60 @@ export const EditSection = () => {
       reader.readAsDataURL(file);
     }
   };
-  const replaceWhiteSpaces = (string) => string.replace(/\s+/g, "%20");
 
-  const url = `https://script.google.com/macros/s/AKfycbxiWv1Soc2Bz5qgLf7R7gDzf5DolBRMyeEMmi-hplKUqAl6MQ46OCCJdE858mxP1WXA9w/exec?&pg=1&func=Editar&fila=${
-    product.id
-  }&value=${[
-    product.Titulo,
-    product.Precio,
-    product.Costo,
-    product.MLC,
-    product.CUP,
-    product.Imagen,
-    product.Categoria,
-    product.Descripcion,
-    product.Estado,
-    product.Proveedor,
-    product.Detalles,
-    product.Otro,
-  ]}`;
-  console.log(replaceWhiteSpaces(url));
+  const handleSubmitEditClick = async () => {
+    if (submitCheck4Edit()) {
+      try {
+        const fileInput = document.getElementById("fileInput");
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append("file", file);
 
-  const handleSubmitClick = () => {
-    const fileInput = document.getElementById("fileInput");
-    if (fileInput.files.length) {
-      const file = fileInput.files[0];
+        if (fileInput.files.length) {
+          // Subir la imagen al servidor
+          const response = await fetch(
+            "https://pruebas.enqba.com/image/upload.php",
+            {
+              method: "POST",
+              body: formData,
+            }
+          );
 
-      const formData = new FormData();
-      formData.append("file", file);
-
-      fetch("https://pruebas.enqba.com/subida/upload.php", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.text();
-          } else {
-            throw new Error("Error en la respuesta de la red");
+          if (!response.ok) {
+            throw new Error("Error al subir la imagen");
           }
-        })
-        .then((responseText) => {
-          console.log("Archivo subido correctamente: " + responseText);
-          product.Imagen = file.name;
 
-          const url = `https://script.google.com/macros/s/AKfycbxiWv1Soc2Bz5qgLf7R7gDzf5DolBRMyeEMmi-hplKUqAl6MQ46OCCJdE858mxP1WXA9w/exec?&pg=1&func=Editar&fila=${
-            product.id
-          }&value=${
-            product.Titulo +
-            "," +
-            product.Precio +
-            "," +
-            product.Costo +
-            "," +
-            product.MLC +
-            "," +
-            product.CUP +
-            "," +
-            product.Imagen +
-            "," +
-            product.Categoria +
-            "," +
-            product.Descripcion +
-            "," +
-            product.Estado +
-            "," +
-            product.Proveedor +
-            "," +
-            product.Detalles +
-            "," +
-            product.Otro
-          }`;
-          fetch(url, {
-            mode: "no-cors",
-          })
-            .then((response) => response.text())
-            .then((data) => {
-              console.log(data);
-              navigate("/");
-            })
-            .catch((error) => console.error(error));
-        })
-        .catch(() => {
-          console.log("Error al subir el archivo");
+          const imageUpload = await response.text();
+          console.log(`Imagen subida correctamente: ${imageUpload}`);
+
+          // Actualizar el estado de la aplicación
           product.Imagen = file.name;
-        });
+        }
+
+        // Enviar la solicitud al servidor
+        const url = `https://script.google.com/macros/s/AKfycbxiWv1Soc2Bz5qgLf7R7gDzf5DolBRMyeEMmi-hplKUqAl6MQ46OCCJdE858mxP1WXA9w/exec?&pg=1&func=Editar&fila=${product.id
+          }&values=${CrudFunctions.getProductValues(product)}`;
+
+        console.log("Edit url " + url);
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, true);
+        xhttp.send();
+
+        navigate("/");
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
+
+  const submitCheck4Edit = () => {
+    return !CrudFunctions.validNumber(product.Precio) ? alert("Dolar no valido")
+      : !CrudFunctions.validNumber(product.Costo) ? alert("Costo no valido")
+        : !CrudFunctions.validNumber(product.MLC) ? alert("MLC no valido")
+          : !CrudFunctions.validNumber(product.CUP) ? alert("CUP no valido")
+            : true
+  }
 
   const handleCleanAllClick = () => {
     const product = {
@@ -363,13 +314,13 @@ export const EditSection = () => {
                   </a>
                   <button>Add +</button>
                 </div>
-                <div onClick={handleToDetailsClick} className="toDetails">
+                <div onClick={CrudFunctions.handleToDetailsClick} className="toDetails">
                   <span>Detalles</span>
                 </div>
               </div>
               {/*/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-*/}
               <div className="details cardCreateSectionDetails">
-                <div className="backFromDetails" onClick={handleToDetailsClick}>
+                <div className="backFromDetails" onClick={CrudFunctions.handleToDetailsClick}>
                   Volver
                 </div>
                 <figure className="details__image-container">
@@ -400,7 +351,7 @@ export const EditSection = () => {
           </div>
           <div className="createSection--controls">
             <button
-              //onClick={handleSubmitEditClick}
+              onClick={handleSubmitEditClick}
               className="createSection--controls__element"
             >
               Subir Cambios
