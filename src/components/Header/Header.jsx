@@ -8,7 +8,6 @@ import { AppContext } from "../../context/DataProvider";
 import "./header-style.css";
 import "./shop-cart.css";
 import "./cart-product.css";
-const images = ["/assets/login.svg", "/assets/shopping-cart.svg"];
 export const Header = () => {
   const {
     allProducts,
@@ -85,12 +84,11 @@ export const Header = () => {
         <div className="navBar__buttons">
           {!userLogged ? (
             <figure>
-              <img
+              <div
                 className="svg--color"
-                src={images[0]}
-                alt="login img"
                 onClick={handleLoginClick}
-              />
+              >
+              </div>
             </figure>
           ) : (
             <div
@@ -101,23 +99,21 @@ export const Header = () => {
             </div>
           )}
           <figure>
-            <img
-              onClick={() => setActive(!active)}
+            <div
               className="svg--color"
-              src={images[1]}
-              alt="car img"
-            />
+              onClick={() => setActive(!active)}
+            >
+            </div>
             <p>{countProducts}</p>
           </figure>
         </div>
-      </header>
+      </header >
 
       <div
-        className={`shopCart-container ${
-          active
-            ? "shopCart-container--visible-cart"
-            : "shopCart-container--hidden-cart"
-        }`}
+        className={`shopCart-container ${active
+          ? "shopCart-container--visible-cart"
+          : "shopCart-container--hidden-cart"
+          }`}
       >
         <div
           className="shopCart--left"
@@ -125,11 +121,10 @@ export const Header = () => {
         ></div>
         <div className="shopCart--right">
           <div
-            className={`shopCart-content ${
-              active
-                ? "shopCart-content--visible-cart"
-                : "shopCart-content--hidden-cart"
-            }`}
+            className={`shopCart-content ${active
+              ? "shopCart-content--visible-cart"
+              : "shopCart-content--hidden-cart"
+              }`}
           >
             <h2>Carrito</h2>
             <div className="cartProduct">
@@ -234,9 +229,8 @@ export const Header = () => {
                 if (allProducts.length > 0) {
                   const cartContents = allProducts
                     .map((product) => {
-                      return `${product.Titulo + " " + product.Descripcion} (x${
-                        product.quantity
-                      })`;
+                      return `${product.Titulo + " " + product.Descripcion} (x${product.quantity
+                        })`;
                     })
                     .join(", ");
                   const whatsappMessage = `Hola, me gustaría saber más sobre el ${cartContents}`;

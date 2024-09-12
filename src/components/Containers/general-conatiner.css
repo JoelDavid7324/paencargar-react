@@ -1,6 +1,5 @@
 .general__container {
   min-height: 100vh;
-  padding-top: var(--header-height);
   background-color: #ffffff;
   background-size: cover;
   background-position: center;

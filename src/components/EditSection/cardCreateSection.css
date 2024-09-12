@@ -73,14 +73,12 @@
   margin: 0 auto;
 }
 .cardCreateSection--container {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   border-radius: 7px;
-}
-.cardCreateSectionProduct {
-  border-radius: 7px;
+  overflow: hidden;
 }
 .cardCreateSectionDetails {
-  border-radius: 7px;
   top: 0;
 }
 .createSection--controls {
