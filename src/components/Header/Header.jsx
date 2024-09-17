@@ -69,6 +69,7 @@ export const Header = () => {
             Cell <span className="header__text--color">xEncargo</span>
           </p>
         </div>
+
         <div className="navbar__findBar">
           <input
             type="text"

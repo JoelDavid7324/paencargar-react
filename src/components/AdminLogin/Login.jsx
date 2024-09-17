@@ -74,7 +74,7 @@ export const Login = () => {
 
   const contact = () => {
     const whatsappMessage = "Hola, he olvidado mi contraseña de administración";
-    window.open(`https://wa.me/+58468600?text=${whatsappMessage}`);
+    window.open(`https://wa.me/+5358468600?text=${whatsappMessage}`);
   };
 
   return (

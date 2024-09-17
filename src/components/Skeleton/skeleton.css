@@ -1,6 +1,6 @@
 .skeleton {
-  animation: skeleton--loading 0.7s linear infinite alternate;
   border-radius: 3px;
+  animation: skeleton--loading 0.7s linear infinite alternate;
   background-color: #a3b8c2;
 }
 @keyframes skeleton--loading {

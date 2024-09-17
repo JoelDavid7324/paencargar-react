@@ -87,7 +87,7 @@ export const Card = () => {
 
   const buyNow = (product) => {
     const whatsappMessage = `Hola, estoy interesado en comprar ${product.Titulo} ${product.Descripcion}`;
-    window.open(`https://wa.me/+58468600?text=${whatsappMessage}`);
+    window.open(`https://wa.me/+5358468600?text=${whatsappMessage}`);
   };
 
   const handleToDetailsClick = (e) => {
@@ -159,16 +159,13 @@ export const Card = () => {
   return (
     <>
       {userLogged && !editMode && !deleteMode ? (
-        <div className="userLoggedOptionsTitle">
-          Toque la letra de su nombre para desplegar las opciones
+        <div className="userLoggedOptionsTitle">Toque la letra de su nombre para desplegar las opciones
         </div>
       ) : userLogged && editMode ? (
-        <div className="userLoggedOptionsTitle">
-          Toque la tarjeta del producto que desea editar
+        <div className="userLoggedOptionsTitle">Toque la tarjeta del producto que desea editar
         </div>
       ) : userLogged && deleteMode ? (
-        <div className="userLoggedOptionsTitle">
-          Toque la tarjeta del producto que desea eliminar
+        <div className="userLoggedOptionsTitle">Toque la tarjeta del producto que desea eliminar
         </div>
       ) : (
         ""
@@ -246,7 +243,7 @@ export const Card = () => {
                         <a onClick={() => buyNow(product)}>
                           <img
                             src="https://seeklogo.com/images/W/whatsapp-icon-logo-6E793ACECD-seeklogo.com.png"
-                            alt="whatsapp ico "
+                            alt="ico"
                           />
                         </a>
                         <button onClick={() => onAddProduct(product)}>

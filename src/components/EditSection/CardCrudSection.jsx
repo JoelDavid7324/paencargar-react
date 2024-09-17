@@ -13,13 +13,13 @@ export const CardCrudSection = () => {
     const editSection = document.querySelector(".cardEdit__container");
     const titleCardEditDiv = document.querySelector(".userLoggedOptionsTitle");
     if (!editSection.style.top) {
-      editSection.style.top = `calc(-255px + var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`;
+      editSection.style.top = `calc(-305px + var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`;
     }
     if (
       editSection.style.top ===
       `calc(var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`
     ) {
-      editSection.style.top = `calc(-255px + var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`;
+      editSection.style.top = `calc(-305px + var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`;
     } else {
       editSection.style.top = `calc(var(--header-height) + ${titleCardEditDiv.offsetHeight}px)`;
     }
@@ -28,7 +28,7 @@ export const CardCrudSection = () => {
   useEffect(() => {
     const editSection = document.querySelector(".cardEdit__container");
     if (editMode || deleteMode) {
-      editSection.style.top = "-150px";
+      editSection.style.top = "-170px";
     }
   }, [editMode, deleteMode]);
 

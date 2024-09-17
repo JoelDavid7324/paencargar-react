@@ -68,6 +68,17 @@
   .header__text {
     font-size: calc(var(--header-height) * 0.4);
   }
+  @keyframes hello-header-size {
+    0% {
+      font-size: 60px;
+    }
+    25% {
+      font-size: 60px;
+    }
+    100% {
+      font-size: calc(var(--header-height) * 0.4);
+    }
+  }
   .header .navBar__buttons figure {
     height: 23px;
   }
@@ -147,8 +158,9 @@
     height: 70%;
   }
   .userLoggedOptionsTitle {
-    padding: 5vw;
-    padding-top: 0;
+    padding: 4vw;
+    padding-top: 3px;
+    margin-top: -3px;
   }
 
   .createSectionContainer {
